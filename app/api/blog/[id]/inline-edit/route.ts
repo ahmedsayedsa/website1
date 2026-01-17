@@ -10,8 +10,9 @@ async function checkAuth(request: NextRequest) {
 
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     const isAuth = await checkAuth(request);
     if (!isAuth) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -46,7 +47,7 @@ export async function PATCH(
         }
 
         const updatedPost = await prisma.blog.update({
-            where: { id: params.id },
+            where: { id },
             data: { [field]: value },
         });
 

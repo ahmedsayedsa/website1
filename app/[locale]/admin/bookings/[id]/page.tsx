@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation';
 import { CheckCircle, XCircle, Calendar, User, MapPin, CreditCard, ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 
-export default async function BookingDetailsPage({ params }: { params: { id: string } }) {
+export default async function BookingDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const booking = await prisma.booking.findUnique({
-        where: { id: params.id },
+        where: { id },
         include: {
             package: true,
         },

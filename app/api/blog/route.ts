@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET() {
     try {
-        const posts = await prisma.blogPost.findMany({
+        const posts = await prisma.blog.findMany({
             where: { published: true },
             orderBy: { createdAt: 'desc' },
         });
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     // This endpoint should be protected or used by n8n with API key
     try {
         const body = await request.json();
-        const post = await prisma.blogPost.create({
+        const post = await prisma.blog.create({
             data: body,
         });
         return NextResponse.json(post, { status: 201 });

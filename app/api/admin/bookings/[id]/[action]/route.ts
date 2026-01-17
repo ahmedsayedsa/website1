@@ -9,12 +9,11 @@ async function checkAuth(request: NextRequest) {
     return await verifyToken(token);
 }
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string, action: string }> }) {
     const isAuth = await checkAuth(request);
     if (!isAuth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const bookingId = params.id;
-    const action = request.nextUrl.pathname.split('/').pop(); // 'approve' or 'cancel'
+    const { id: bookingId, action } = await params;
 
     let status: 'CONFIRMED' | 'CANCELLED';
     if (action === 'approve') status = 'CONFIRMED';

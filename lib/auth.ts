@@ -39,7 +39,8 @@ export async function login(formData: FormData) {
         const session = await signToken({ user, expires });
 
         // Save the session in a cookie
-        cookies().set('session', session, { expires, httpOnly: true });
+        const cookieStore = await cookies();
+        cookieStore.set('session', session, { expires, httpOnly: true });
 
         return true;
     }
@@ -48,11 +49,11 @@ export async function login(formData: FormData) {
 }
 
 export async function logout() {
-    cookies().set('session', '', { expires: new Date(0) });
+    (await cookies()).set('session', '', { expires: new Date(0) });
 }
 
 export async function getSession() {
-    const session = cookies().get('session')?.value;
+    const session = (await cookies()).get('session')?.value;
     if (!session) return null;
     return await verifyToken(session);
 }

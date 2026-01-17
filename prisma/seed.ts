@@ -1,4 +1,4 @@
-import { PrismaClient, TourType, Role } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -11,8 +11,8 @@ async function main() {
         create: {
             email: 'admin@elmaali.com',
             name: 'Admin User',
-            passwordHash: 'hashed_password_placeholder', // bcrypt hash for 'password123'
-            role: Role.ADMIN,
+            password: 'admin123', // In production use hashed password
+            role: 'admin',
         },
     });
 
@@ -21,38 +21,31 @@ async function main() {
     // Create Domestic Package
     const sharm = await prisma.package.create({
         data: {
-            nameAr: 'رحلة شرم الشيخ الممتعة',
-            nameEn: 'Amazing Sharm El Sheikh',
+            titleAr: 'رحلة شرم الشيخ الممتعة',
+            titleEn: 'Amazing Sharm El Sheikh',
             descriptionAr: 'استمتع بأجمل الشواطئ في شرم الشيخ مع إقامة فاخرة.',
             descriptionEn: 'Enjoy the beautiful beaches of Sharm El Sheikh with luxury accommodation.',
-            category: TourType.DOMESTIC,
-            destination: 'Sharm El Sheikh',
+            category: 'domestic',
             duration: 5,
-            priceFrom: 4500,
-            inclusions: ['Hotel', 'Breakfast', 'Airport Transfer'],
-            exclusions: ['Flights', 'Lunch', 'Dinner'],
+            price: 4500,
             featuredImage: '/images/sharm.jpg',
-            maxCapacity: 20,
-            availableDates: [new Date('2026-06-01'), new Date('2026-06-15')],
+            published: true,
+            featured: true,
         },
     });
 
     // Create Hajj Package
     const hajj = await prisma.package.create({
         data: {
-            nameAr: 'باقة الحج الاقتصادية',
-            nameEn: 'Economy Hajj Package',
+            titleAr: 'باقة الحج الاقتصادية',
+            titleEn: 'Economy Hajj Package',
             descriptionAr: 'أداء مناسك الحج بتكلفة معقولة وخدمات مميزة.',
             descriptionEn: 'Perform Hajj rituals with affordable cost and excellent services.',
-            category: TourType.RELIGIOUS,
-            destination: 'Makkah',
+            category: 'hajj',
             duration: 21,
-            priceFrom: 150000, // EGP
-            inclusions: ['Visa', 'Hotel', 'Transport', 'Guide'],
-            exclusions: ['Personal Expenses'],
+            price: 150000, // EGP
             featuredImage: '/images/hajj.jpg',
-            maxCapacity: 50,
-            availableDates: [new Date('2026-06-20')],
+            published: true,
         },
     });
 

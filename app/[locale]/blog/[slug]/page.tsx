@@ -2,7 +2,8 @@ import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import { Calendar, User } from 'lucide-react';
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const t = useTranslations('BlogPage');
     const locale = useLocale();
 
