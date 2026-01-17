@@ -1,0 +1,186 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  bookings  Booking[] // Relation field needed for consistency
+}
+
+model Package {
+  id              String   @id @default(cuid())
+  titleAr         String
+  titleEn         String
+  descriptionAr   String   @db.Text
+  descriptionEn   String   @db.Text
+  price           Float
+  duration        Int      // in days
+  category        String   // "domestic", "international", "hajj", "umrah"
+  featured        Boolean  @default(false)
+  published       Boolean  @default(true)
+  featuredImage   String?
+  gallery         String[] // Array of image URLs
+  itineraryAr     String?  @db.Text
+  itineraryEn     String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  bookings        Booking[]
+}
+
+model Booking {
+  id              String   @id @default(cuid())
+  packageId       String
+  package         Package  @relation(fields: [packageId], references: [id])
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  numberOfPeople  Int
+  travelDate      DateTime
+  totalPrice      Float
+  status          String   @default("pending") // "pending", "confirmed", "cancelled"
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Optional relation to User if needed, keeping simple as per request or linking back
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id]) 
+}
+
+model Blog {
+  id              String   @id @default(cuid())
+  titleAr         String
+  titleEn         String
+  slug            String   @unique
+  contentAr       String   @db.Text
+  contentEn       String   @db.Text
+  excerptAr       String?
+  excerptEn       String?
+  featuredImage   String?
+  published       Boolean  @default(false)
+  publishedAt     DateTime?
+  author          String?
+  tags            String[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Settings {
+  id              String   @id @default(cuid())
+  key             String   @unique
+  value           String   @db.Text
+  updatedAt       DateTime @updatedAt
+}
+
+model ApiSettings {
+  id                String   @id @default(cuid())
+  
+  // Payment Gateway - Paymob
+  paymobEnabled     Boolean  @default(false)
+  paymobLabel       String   @default("بطاقة الائتمان / Credit Card")
+  paymobApiKey      String?
+  paymobSecretKey   String?
+  paymobPublicKey   String?
+  paymobIntegrationId String?
+  paymobIframeId    String?
+  paymobHmacSecret  String?
+  paymobTestMode    Boolean  @default(true)
+  
+  // Payment Gateway - Stripe
+  stripeEnabled     Boolean  @default(false)
+  stripeLabel       String   @default("International Payment")
+  stripePublicKey   String?
+  stripeSecretKey   String?
+  stripeTestMode    Boolean  @default(true)
+  
+  // Payment Gateway - Fawry
+  fawryEnabled      Boolean  @default(false)
+  fawryLabel        String   @default("فوري / Fawry")
+  fawryMerchantCode String?
+  fawrySecurityKey  String?
+  fawryTestMode     Boolean  @default(true)
+  
+  // Email Service
+  emailProvider     String   @default("resend")
+  emailProviderLabel String  @default("Email Service")
+  emailApiKey       String?
+  emailFromAddress  String?
+  emailFromName     String?
+  
+  // SMS - Twilio
+  smsEnabled        Boolean  @default(false)
+  smsProviderLabel  String   @default("SMS Notifications")
+  twilioAccountSid  String?
+  twilioAuthToken   String?
+  twilioPhoneNumber String?
+  
+  // WhatsApp Business
+  whatsappEnabled   Boolean  @default(false)
+  whatsappLabel     String   @default("واتساب / WhatsApp")
+  whatsappApiKey    String?
+  whatsappPhoneId   String?
+  
+  // Google Services
+  googleMapsApiKey  String?
+  googleAnalyticsId String?
+  
+  // Cloudinary
+  cloudinaryEnabled Boolean  @default(false)
+  cloudinaryCloudName String?
+  cloudinaryApiKey  String?
+  cloudinaryApiSecret String?
+  
+  // n8n Webhook Integration (for SEO automation)
+  n8nEnabled        Boolean  @default(false)
+  n8nWebhookUrl     String?
+  n8nApiKey         String?
+  n8nAutoPublish    Boolean  @default(false)
+  
+  // General
+  currency          String   @default("EGP")
+  timezone          String   @default("Africa/Cairo")
+  defaultLanguage   String   @default("ar")
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  updatedBy         String?
+  
+  @@map("api_settings")
+}
+
+model ApiSettingsHistory {
+  id        String   @id @default(cuid())
+  settingId String
+  field     String
+  oldValue  String?
+  newValue  String?
+  changedBy String
+  changedAt DateTime @default(now())
+  ipAddress String?
+  
+  @@map("api_settings_history")
+}
+
+model SocialMediaLinks {
+  id          String   @id @default(cuid())
+  platform    String   @unique // facebook, instagram, twitter, youtube, tiktok, linkedin
+  url         String
+  enabled     Boolean  @default(true)
+  displayOrder Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("social_media_links")
+}

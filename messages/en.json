@@ -1,0 +1,197 @@
+{
+    "HomePage": {
+        "title": "Al-Maali Tours",
+        "subtitle": "Discover the World with Dream Trips",
+        "description": "Domestic and international tours, Hajj & Umrah programs",
+        "startJourney": "Explore Tours",
+        "contact": "Contact Us",
+        "features": {
+            "experienceTitle": "15+ Years Experience",
+            "experienceDesc": "We have been organizing trips since 2010 with excellence.",
+            "supportTitle": "24/7 Support",
+            "supportDesc": "Our team is available round the clock to assist you.",
+            "guidesTitle": "Certified Guides",
+            "guidesDesc": "Professional multi-lingual guides for all tours.",
+            "priceTitle": "Best Price Guarantee",
+            "priceDesc": "We offer the best value for your money."
+        },
+        "quickTours": {
+            "title": "Popular Destinations",
+            "subtitle": "Explore our most sought-after travel categories and find your perfect getaway.",
+            "domestic": "Domestic Tours",
+            "international": "International",
+            "religious": "Hajj & Umrah",
+            "packages": "Packages"
+        },
+        "testimonials": {
+            "title": "What Our Clients Say",
+            "reviews": {
+                "review1": {
+                    "name": "Ahmed Hassan",
+                    "role": "Family Trip to Cox",
+                    "text": "The best travel agency I have dealt with. Everything was organized perfectly, from the hotel to the transfers. Highly recommended!"
+                },
+                "review2": {
+                    "name": "Sarah Ibrahim",
+                    "role": "Umrah Package",
+                    "text": "Al-Maali Tours made my Umrah experience spiritual and hassle-free. The guide was very knowledgeable and helpful."
+                },
+                "review3": {
+                    "name": "Mohamed Ali",
+                    "role": "Honeymoon in Turkey",
+                    "text": "Unforgettable honeymoon! Great prices and amazing service. Thank you for making our trip so special."
+                }
+            }
+        }
+    },
+    "Navigation": {
+        "home": "Home",
+        "about": "About Us",
+        "tours": "Tours",
+        "hajjUmrah": "Hajj & Umrah",
+        "blog": "Blog",
+        "contact": "Contact Us",
+        "common": {
+            "bookNow": "Book Now"
+        }
+    },
+    "Common": {
+        "bookNow": "Book Now",
+        "readMore": "Read More"
+    },
+    "AboutPage": {
+        "title": "About Al-Maali Tours",
+        "story": "We are a premier travel agency based in Cairo, dedicated to providing exceptional travel experiences. From domestic getaways to spiritual journeys, we handle every detail with care.",
+        "missionTitle": "Our Mission",
+        "missionText": "To inspire and enable people to explore the world with confidence, comfort, and joy. We strive to offer the best value without compromising on quality.",
+        "whyChooseUsTitle": "Why Choose Us?",
+        "values": {
+            "guides": "Expert Local Guides",
+            "support": "24/7 Customer Support",
+            "secure": "Secure Payment Options",
+            "custom": "Customizable Packages"
+        }
+    },
+    "ToursPage": {
+        "allTours": "All Tours",
+        "subtitle": "Explore our curated selection of amazing trips",
+        "filters": {
+            "all": "All",
+            "domestic": "Domestic",
+            "international": "International",
+            "religious": "Religious"
+        },
+        "card": {
+            "days": "Days",
+            "groupTour": "Group Tour",
+            "startingFrom": "Starting from",
+            "details": "Details",
+            "currency": "EGP"
+        }
+    },
+    "PackageDetails": {
+        "overview": "Overview",
+        "itinerary": "Itinerary",
+        "included": "Included",
+        "excluded": "Excluded",
+        "startingFrom": "Starting from",
+        "perPerson": "per person",
+        "selectDate": "Select Date",
+        "guests": "Guests",
+        "bookNow": "Book This Tour",
+        "noPayment": "No payment required today",
+        "heroStats": {
+            "days": "Days",
+            "group": "Group Tour"
+        }
+    },
+    "HajjUmrahPage": {
+        "title": "Hajj & Umrah",
+        "subtitle": "Experience the spiritual journey of a lifetime with our premium and economy packages.",
+        "availablePackages": "Available Packages",
+        "bookNow": "Book Now",
+        "bestValue": "Best Value",
+        "packages": {
+            "economy": {
+                "title": "Economy Umrah",
+                "price": "EGP 22,000",
+                "features": [
+                    "10 Days",
+                    "3 Star Hotels",
+                    "Visa Included",
+                    "Bus Transport"
+                ]
+            },
+            "premium": {
+                "title": "Premium Umrah",
+                "price": "EGP 35,000",
+                "features": [
+                    "12 Days",
+                    "5 Star Hotels (Close to Haram)",
+                    "Flight Included",
+                    "Private Transport"
+                ]
+            },
+            "vip": {
+                "title": "VIP Hajj",
+                "price": "EGP 150,000",
+                "features": [
+                    "21 Days",
+                    "Luxury Hotels (Clock Tower)",
+                    "Private Tent in Mina",
+                    "Full Board Meals"
+                ]
+            }
+        }
+    },
+    "BlogPage": {
+        "title": "Travel Blog",
+        "readMore": "Read More →",
+        "backToBlog": "Back to Blog"
+    },
+    "ContactPage": {
+        "title": "Get in Touch",
+        "infoTitle": "Contact Information",
+        "visitUs": "Visit Us",
+        "callUs": "Call Us",
+        "emailUs": "Email Us",
+        "workingHours": "Working Hours",
+        "days": "Sat - Thu",
+        "closed": "Friday: Closed",
+        "formTitle": "Send us a Message",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "subject": "Subject",
+            "message": "Message",
+            "send": "Send Message",
+            "placeholders": {
+                "name": "Your Name",
+                "email": "your@email.com",
+                "subject": "Inquiry about...",
+                "message": "How can we help you?"
+            }
+        }
+    },
+    "FAQPage": {
+        "title": "Frequently Asked Questions",
+        "questions": {
+            "q1": {
+                "question": "How do I book a tour?",
+                "answer": "You can book a tour directly through our website by selecting a package and clicking 'Book Now', or by contacting our support team."
+            },
+            "q2": {
+                "question": "What payment methods do you accept?",
+                "answer": "We accept major credit cards (Visa, MasterCard), bank transfers, and cash payments at our office."
+            },
+            "q3": {
+                "question": "Do you provide visa assistance?",
+                "answer": "Yes, for many destinations including Hajj & Umrah, we provide full visa application assistance."
+            },
+            "q4": {
+                "question": "Can I customize my package?",
+                "answer": "Absolutely! We specialize in tailor-made holidays. Contact us to design your perfect trip."
+            }
+        }
+    }
+}
