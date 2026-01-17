@@ -13,9 +13,13 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                     {/* Brand Info */}
                     <div>
-                        <h3 className="text-2xl font-bold mb-4">
-                            Al-Maali<span className="text-orange-500">Tours</span>
-                        </h3>
+                        <Link href="/" className="flex items-center gap-2 mb-4">
+                            <img
+                                src="/logo.svg"
+                                alt="Al-Maali Tours"
+                                className="h-10 w-auto brightness-0 invert"
+                            />
+                        </Link>
                         <p className="text-slate-400 leading-relaxed mb-6">
                             {t('HomePage.description')}
                         </p>

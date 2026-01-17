@@ -43,7 +43,7 @@ export default function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <img
-                            src="/logo.jpg"
+                            src="/logo.svg"
                             alt="Al-Maali Tours"
                             className="h-12 w-auto object-contain"
                         />

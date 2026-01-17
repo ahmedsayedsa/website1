@@ -23,7 +23,7 @@ export const metadata = {
   title: "Al-Maali Tours",
   description: "Travel Agency",
   icons: {
-    icon: '/logo.jpg',
+    icon: '/logo.svg',
   },
 };
 
